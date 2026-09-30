@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astra | AI FAQ Assistant - Project Astra</title>
+    <meta name="description" content="Astra is an AI-powered FAQ Chatbot for Project Astra, created by Dhruv Teli utilizing Natural Language Processing (NLP), NLTK, and TF-IDF Cosine Similarity.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="theme-dark">
+    <div class="app-container">
+        
+        <!-- Sidebar for FAQ Knowledge Base -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand">
+                    <div class="brand-icon">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div>
+                        <h2>Astra</h2>
+                        <span class="badge-tech">Project Astra &bull; NLP</span>
+                    </div>
+                </div>
+                <button class="icon-btn mobile-close" id="closeSidebarBtn" aria-label="Close Sidebar">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="sidebar-content">
+                <!-- Search FAQ Knowledge Base -->
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="faqSearchInput" placeholder="Search knowledge base... (Ctrl+K)" autocomplete="off" />
+                    <button class="search-clear-btn" id="searchClearBtn" style="display:none;" aria-label="Clear search">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- FAQ Categories Accordion -->
+                <div class="section-title">
+                    <span><i class="fa-solid fa-layer-group"></i> Knowledge Categories</span>
+                    <span class="category-total-badge" id="categoryTotalBadge">15 FAQs</span>
+                </div>
+                
+                <div class="categories-list" id="categoriesList">
+                    <div class="loading-state">
+                        <i class="fa-solid fa-spinner fa-spin"></i> Loading knowledge base...
+                    </div>
+                </div>
+
+                <!-- Model & Algorithm Telemetry Card -->
+                <div class="telemetry-card">
+                    <h4><i class="fa-solid fa-microchip"></i> Engine Pipeline</h4>
+                    <ul class="telemetry-list">
+                        <li><span>Tokenizer:</span> <strong>NLTK Punkt</strong></li>
+                        <li><span>Lemmatizer:</span> <strong>WordNet NLP</strong></li>
+                        <li><span>Vector Space:</span> <strong>TF-IDF (1,2)-grams</strong></li>
+                        <li><span>Matcher:</span> <strong>Cosine Similarity</strong></li>
+                        <li><span>Threshold:</span> <strong>35% Gate</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-primary w-100 mb-2" id="openImportModalBtn" title="Import new FAQs, run NLP preprocessing and re-train model">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Import &amp; Train FAQs
+                </button>
+                <button class="btn btn-secondary w-100" id="clearChatBtn" title="Clear chat (Ctrl+L)">
+                    <i class="fa-solid fa-trash-can"></i> Clear Conversation
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <!-- Chat Header -->
+            <header class="chat-header">
+                <div class="header-left">
+                    <button class="icon-btn mobile-toggle" id="openSidebarBtn" aria-label="Open Sidebar" title="Browse Knowledge Base">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="avatar-status">
+                        <div class="bot-avatar">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <span class="status-indicator online"></span>
+                    </div>
+                    <div class="header-info">
+                        <div class="title-row">
+                            <h1>Astra &bull; Smart FAQ Assistant</h1>
+                            <span class="badge-status">Project Astra</span>
+                        </div>
+                        <p class="status-text">
+                            <span class="pulse-dot"></span> Instant NLP Matching &bull; Powered by Project Astra
+                        </p>
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    <button class="btn btn-outline-import header-import-btn" id="headerImportBtn" title="Import &amp; Preprocess FAQs">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> <span>Import FAQs</span>
+                    </button>
+                    <button class="icon-btn" id="soundToggleBtn" title="Toggle UI Sound FX" aria-label="Toggle Sound">
+                        <i class="fa-solid fa-bell" id="soundIcon"></i>
+                    </button>
+                    <button class="icon-btn" id="voiceToggleBtn" title="Toggle Audio Narration (TTS)" aria-label="Toggle Voice">
+                        <i class="fa-solid fa-volume-high" id="voiceIcon"></i>
+                    </button>
+                    <button class="icon-btn" id="themeToggleBtn" title="Switch Theme (Light/Dark)" aria-label="Toggle Theme">
+                        <i class="fa-solid fa-sun" id="themeIcon"></i>
+                    </button>
+                    <button class="icon-btn" id="exportChatBtn" title="Export Conversation" aria-label="Export Chat">
+                        <i class="fa-solid fa-download"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Quick Category Pill Filter Strip -->
+            <nav class="category-pills-bar" id="categoryPillsBar" aria-label="FAQ Topics Quick Navigation">
+                <button class="pill-btn active" data-category="all">
+                    <i class="fa-solid fa-border-all"></i> All Topics
+                </button>
+                <button class="pill-btn" data-category="Orders & Tracking">
+                    <i class="fa-solid fa-truck-fast"></i> Orders & Tracking
+                </button>
+                <button class="pill-btn" data-category="Shipping & Delivery">
+                    <i class="fa-solid fa-box-open"></i> Shipping & Delivery
+                </button>
+                <button class="pill-btn" data-category="Returns & Refunds">
+                    <i class="fa-solid fa-rotate-left"></i> Returns & Refunds
+                </button>
+                <button class="pill-btn" data-category="Payments & Billing">
+                    <i class="fa-solid fa-credit-card"></i> Payments & Billing
+                </button>
+                <button class="pill-btn" data-category="Account & Security">
+                    <i class="fa-solid fa-shield-halved"></i> Account Security
+                </button>
+                <button class="pill-btn" data-category="Warranty & Technical">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> Warranty & Tech
+                </button>
+            </nav>
+
+            <!-- Chat Messages Container -->
+            <div class="chat-messages" id="chatMessages">
+                <!-- Welcome Banner Message -->
+                <div class="message bot welcome-message">
+                    <div class="message-avatar">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <div class="welcome-header">
+                                <div class="welcome-badge">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i> Project Astra &bull; AI Assistant
+                                </div>
+                                <h3>Hello! I am Astra. What can I help you resolve today?</h3>
+                            </div>
+                            <p class="welcome-desc">
+                                Ask any question about orders, shipping, returns, billing, and technical support. You can also ask <em>"Who are you?"</em>, <em>"Who made you?"</em>, or click <strong>"Import FAQs"</strong> to retrain the model in real time.
+                            </p>
+                            
+                            <div class="quick-prompts-label">
+                                <i class="fa-solid fa-bolt"></i> Click any question to test instant answering:
+                            </div>
+                            <div class="quick-chips" id="welcomeQuickChips">
+                                <button class="chip" data-query="Who are you?">
+                                    <i class="fa-solid fa-sparkles"></i> Who are you?
+                                </button>
+                                <button class="chip" data-query="Who made you?">
+                                    <i class="fa-solid fa-user"></i> Who made you?
+                                </button>
+                                <button class="chip" data-query="How can I track my order?">
+                                    <i class="fa-solid fa-truck-fast"></i> Track my order
+                                </button>
+                                <button class="chip" data-query="What is your return and refund policy?">
+                                    <i class="fa-solid fa-rotate-left"></i> Return &amp; refund policy
+                                </button>
+                                <button class="chip" data-query="What payment methods do you accept?">
+                                    <i class="fa-solid fa-credit-card"></i> Accepted payment methods
+                                </button>
+                                <button class="chip" data-query="Do products come with a warranty?">
+                                    <i class="fa-solid fa-certificate"></i> Warranty coverage
+                                </button>
+                            </div>
+                        </div>
+                        <span class="message-time" id="welcomeTime">Just now</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing Indicator (Hidden by default) -->
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="message-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="typing-bubble">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="typing-label">Astra is analyzing vector similarity...</span>
+                </div>
+            </div>
+
+            <!-- Chat Input Bar -->
+            <div class="chat-input-area">
+                <div class="input-container">
+                    <textarea 
+                        id="chatInput" 
+                        rows="1" 
+                        placeholder="Ask Astra anything (e.g. 'Who are you?', 'Who made you?', 'Where is my parcel?')... [Enter to send]"
+                        autocomplete="off"
+                    ></textarea>
+                    
+                    <div class="input-buttons">
+                        <button class="icon-btn speech-btn" id="speechInputBtn" title="Voice Input (Speech-to-Text)" aria-label="Speech to Text">
+                            <i class="fa-solid fa-microphone"></i>
+                        </button>
+                        <button class="send-btn" id="sendBtn" title="Send Question (Enter)" aria-label="Send message">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="input-footer">
+                    <span><i class="fa-solid fa-bolt-lightning"></i> Instant NLP Matching &bull; NLTK Lemmatizer &bull; TF-IDF Cosine Similarity &bull; Press <strong>Enter</strong> to send</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==========================================================================
+         Import & Preprocessing Modal Dialog
+         ========================================================================== -->
+    <div class="modal-overlay" id="importModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <div class="modal-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                    <div>
+                        <h3>Import &amp; Preprocess FAQs</h3>
+                        <p>Upload new FAQ datasets to retrain the NLP TF-IDF index live</p>
+                    </div>
+                </div>
+                <button class="icon-btn" id="closeImportModalBtn" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Import Method Tabs -->
+                <div class="modal-tabs">
+                    <button class="tab-btn active" data-tab="fileTab">
+                        <i class="fa-solid fa-file-arrow-up"></i> Upload JSON / CSV
+                    </button>
+                    <button class="tab-btn" data-tab="rawTab">
+                        <i class="fa-solid fa-code"></i> Paste Raw JSON
+                    </button>
+                </div>
+
+                <!-- Tab 1: File Upload -->
+                <div class="tab-content active" id="fileTab">
+                    <div class="dropzone" id="fileDropzone">
+                        <input type="file" id="faqFileInput" accept=".json,.csv" style="display: none;" />
+                        <i class="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
+                        <h4>Drag &amp; drop your FAQ file here</h4>
+                        <p>Supports <strong>.JSON</strong> or <strong>.CSV</strong> format</p>
+                        <button class="btn btn-secondary btn-sm" id="browseFileBtn" type="button">
+                            <i class="fa-solid fa-folder-open"></i> Browse File
+                        </button>
+                        <div class="selected-file-badge" id="selectedFileBadge" style="display:none;">
+                            <i class="fa-solid fa-file-lines"></i> <span id="selectedFileName">faqs.json</span>
+                            <button type="button" id="removeFileBtn" title="Remove"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Raw JSON Paste -->
+                <div class="tab-content" id="rawTab">
+                    <div class="raw-input-header">
+                        <label for="rawFaqInput">JSON Array of FAQs:</label>
+                        <button type="button" class="btn-sample-load" id="loadSampleBtn">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Load Sample Data
+                        </button>
+                    </div>
+                    <textarea 
+                        id="rawFaqInput" 
+                        class="raw-json-textarea" 
+                        rows="8" 
+                        placeholder='[
+  {
+    "category": "University Admissions",
+    "question": "What is the application deadline for Fall 2026?",
+    "patterns": ["When is the fall deadline?", "Last date to apply for fall semester"],
+    "answer": "The regular application deadline for Fall 2026 is December 15, 2025. Priority consideration deadline is November 1."
+  }
+]'
+                    ></textarea>
+                </div>
+
+                <!-- Import Mode Selection -->
+                <div class="import-mode-selector">
+                    <label class="mode-label">Import Strategy:</label>
+                    <div class="radio-group">
+                        <label class="radio-card">
+                            <input type="radio" name="importMode" value="append" checked />
+                            <div>
+                                <strong>Append to Existing</strong>
+                                <span>Add new FAQs without removing current entries</span>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="importMode" value="replace" />
+                            <div>
+                                <strong>Replace Entire Knowledge Base</strong>
+                                <span>Overwrite current FAQs with the new dataset</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Live Preprocessing Progress Tracker -->
+                <div class="preprocessing-progress" id="preprocessProgress" style="display:none;">
+                    <div class="progress-title">
+                        <i class="fa-solid fa-arrows-rotate fa-spin"></i>
+                        <span id="progressStatusText">Running NLP Preprocessing Pipeline...</span>
+                    </div>
+                    <ul class="progress-steps">
+                        <li id="step1" class="step active"><i class="fa-solid fa-circle-check"></i> 1. Validating FAQ structure</li>
+                        <li id="step2" class="step"><i class="fa-solid fa-circle-check"></i> 2. NLTK Tokenization, Cleaning &amp; Lemmatization</li>
+                        <li id="step3" class="step"><i class="fa-solid fa-circle-check"></i> 3. Fitting TF-IDF Vectorizer &amp; Cosine Matrix</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelImportBtn">Cancel</button>
+                <button class="btn btn-primary" id="executeImportBtn">
+                    <i class="fa-solid fa-bolt"></i> Preprocess &amp; Train Model
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Notification</div>
+
+    <!-- Scripts -->
+    <script src="/static/js/chat.js"></script>
+</body>
+</html>

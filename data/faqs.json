@@ -1,0 +1,382 @@
+[
+  {
+    "id": 1,
+    "category": "Orders & Tracking",
+    "question": "How can I track my order?",
+    "patterns": [
+      "Track my shipment",
+      "Where is my package?",
+      "Where is my parcel?",
+      "Track my parcel",
+      "How to check order status",
+      "Package tracking information",
+      "Track order delivery progress"
+    ],
+    "answer": "You can track your order in real-time by visiting the 'My Orders' section in your account dashboard and clicking 'Track Package'. You will also receive an email and SMS with your courier tracking link once your order is dispatched."
+  },
+  {
+    "id": 2,
+    "category": "Orders & Tracking",
+    "question": "Can I cancel or modify my order after placing it?",
+    "patterns": [
+      "How do I cancel my order?",
+      "Change my order details",
+      "Cancel order before shipment",
+      "Modify shipping address after ordering",
+      "Stop order processing"
+    ],
+    "answer": "Orders can be modified or canceled within 30 minutes of placing them directly from your 'Order History' page. If the order has already been processed or shipped, you can initiate a return once the package arrives."
+  },
+  {
+    "id": 3,
+    "category": "Shipping & Delivery",
+    "question": "What are your shipping options and delivery times?",
+    "patterns": [
+      "How long does delivery take?",
+      "Estimated delivery time",
+      "Express shipping options",
+      "Standard shipping duration",
+      "When will my order arrive?"
+    ],
+    "answer": "We offer Standard Delivery (3-5 business days) and Express Delivery (1-2 business days). Delivery times may vary slightly based on your postal code and courier schedule."
+  },
+  {
+    "id": 4,
+    "category": "Shipping & Delivery",
+    "question": "Do you offer free shipping?",
+    "patterns": [
+      "Is shipping free?",
+      "Free delivery minimum order",
+      "How to get free shipping?",
+      "Delivery charges and free shipping threshold"
+    ],
+    "answer": "Yes! Standard shipping is free on all orders over $49. For orders below $49, a flat standard shipping fee of $4.99 applies."
+  },
+  {
+    "id": 5,
+    "category": "Returns & Refunds",
+    "question": "What is your return and refund policy?",
+    "patterns": [
+      "How do I return an item?",
+      "Return policy duration",
+      "Can I get a refund?",
+      "Money back guarantee and return window",
+      "How many days to return a product?"
+    ],
+    "answer": "We offer a 30-day hassle-free return policy on unused items in their original packaging. Once our warehouse inspects the returned item, your refund will be processed to the original payment method within 5-7 business days."
+  },
+  {
+    "id": 6,
+    "category": "Returns & Refunds",
+    "question": "How do I request a replacement for a damaged item?",
+    "patterns": [
+      "Item arrived broken or damaged",
+      "Received defective item replacement",
+      "Exchange broken product",
+      "My order is damaged, what should I do?"
+    ],
+    "answer": "If your item arrived damaged or defective, please navigate to 'Returns & Replacements' in your account, select the item, and upload a photo of the damage. We will dispatch a free replacement within 24 hours."
+  },
+  {
+    "id": 7,
+    "category": "Payments & Billing",
+    "question": "What payment methods do you accept?",
+    "patterns": [
+      "Payment options available",
+      "Can I pay with credit card or PayPal?",
+      "Supported payment gateways",
+      "Do you accept Apple Pay, Google Pay, or debit cards?"
+    ],
+    "answer": "We accept Visa, MasterCard, American Express, Discover, PayPal, Apple Pay, Google Pay, and UPI. All transactions are protected with 256-bit SSL encryption."
+  },
+  {
+    "id": 8,
+    "category": "Payments & Billing",
+    "question": "Why was my payment declined?",
+    "patterns": [
+      "Payment failed during checkout",
+      "Credit card transaction declined",
+      "Why did my transaction not go through?",
+      "Payment processing error"
+    ],
+    "answer": "Payments can be declined due to incorrect CVV/expiry date, insufficient funds, or bank fraud prevention triggers. We recommend contacting your issuing bank or trying an alternative payment method like PayPal."
+  },
+  {
+    "id": 9,
+    "category": "Account & Security",
+    "question": "How do I reset my account password?",
+    "patterns": [
+      "Forgot my password",
+      "How to reset password?",
+      "Cannot login to my account",
+      "Change account password"
+    ],
+    "answer": "Click on 'Sign In', select 'Forgot Password', and enter your registered email address. You will receive a secure password reset link valid for 15 minutes."
+  },
+  {
+    "id": 10,
+    "category": "Account & Security",
+    "question": "How do I enable Two-Factor Authentication (2FA)?",
+    "patterns": [
+      "Enable 2FA on my account",
+      "Two factor authentication setup",
+      "Account security two step verification",
+      "How to protect my account with 2FA"
+    ],
+    "answer": "Go to 'Account Settings' > 'Security' > 'Two-Factor Authentication', and click 'Enable'. You can link an authenticator app (Google Authenticator, Authy) or set up SMS verification codes."
+  },
+  {
+    "id": 11,
+    "category": "Customer Support",
+    "question": "How can I contact customer support?",
+    "patterns": [
+      "Contact human support agent",
+      "Customer care phone number",
+      "Support email address",
+      "Speak to a customer representative",
+      "Help desk live agent contact"
+    ],
+    "answer": "You can reach our 24/7 customer support team via Live Chat on our website, email us at support@example.com, or call toll-free at 1-800-555-0199 (Mon-Fri, 9am - 8pm EST)."
+  },
+  {
+    "id": 12,
+    "category": "Discounts & Promos",
+    "question": "How do I apply a coupon or promo code?",
+    "patterns": [
+      "Where to enter discount code?",
+      "Apply promo coupon at checkout",
+      "Use voucher code for discount",
+      "Promo code not working"
+    ],
+    "answer": "On the checkout page, enter your promo code into the 'Discount / Promo Code' box and click 'Apply'. The discount will immediately reflect in your order total. Note that only one promo code can be used per order."
+  },
+  {
+    "id": 13,
+    "category": "Warranty & Technical",
+    "question": "Do products come with a warranty?",
+    "patterns": [
+      "Product warranty coverage",
+      "How long is manufacturer warranty?",
+      "Claim warranty for repair",
+      "Is there a warranty policy?"
+    ],
+    "answer": "All electronic products include a minimum 1-year manufacturer warranty covering hardware defects. You can also purchase optional extended protection plans (2 or 3 years) during checkout."
+  },
+  {
+    "id": 14,
+    "category": "General",
+    "question": "What are your business hours?",
+    "patterns": [
+      "Operating hours",
+      "When are you open?",
+      "Office working hours",
+      "Customer service availability timings"
+    ],
+    "answer": "Our online store is open 24/7/365. Our customer support team is available Mon-Fri 9 AM - 8 PM EST and Sat-Sun 10 AM - 6 PM EST."
+  },
+  {
+    "id": 15,
+    "category": "General",
+    "question": "Who are you and what can you help with?",
+    "patterns": [
+      "Who are you?",
+      "What is this chatbot?",
+      "What can you do?",
+      "Help me",
+      "Hi",
+      "Hello",
+      "Hey"
+    ],
+    "answer": "Hello! I am your AI FAQ Assistant. I can help answer questions about order tracking, shipping & delivery, returns & refunds, payment methods, account security, and warranty support. What can I help you with today?"
+  },
+  {
+    "id": 16,
+    "category": "Orders & Tracking",
+    "question": "How can I track my order?",
+    "patterns": [
+      "Track my shipment",
+      "Where is my package?",
+      "Where is my parcel?",
+      "Track my parcel",
+      "How to check order status",
+      "Package tracking information",
+      "Track order delivery progress"
+    ],
+    "answer": "You can track your order in real-time by visiting the 'My Orders' section in your account dashboard and clicking 'Track Package'. You will also receive an email and SMS with your courier tracking link once your order is dispatched."
+  },
+  {
+    "id": 17,
+    "category": "Orders & Tracking",
+    "question": "Can I cancel or modify my order after placing it?",
+    "patterns": [
+      "How do I cancel my order?",
+      "Change my order details",
+      "Cancel order before shipment",
+      "Modify shipping address after ordering",
+      "Stop order processing"
+    ],
+    "answer": "Orders can be modified or canceled within 30 minutes of placing them directly from your 'Order History' page. If the order has already been processed or shipped, you can initiate a return once the package arrives."
+  },
+  {
+    "id": 18,
+    "category": "Shipping & Delivery",
+    "question": "What are your shipping options and delivery times?",
+    "patterns": [
+      "How long does delivery take?",
+      "Estimated delivery time",
+      "Express shipping options",
+      "Standard shipping duration",
+      "When will my order arrive?"
+    ],
+    "answer": "We offer Standard Delivery (3-5 business days) and Express Delivery (1-2 business days). Delivery times may vary slightly based on your postal code and courier schedule."
+  },
+  {
+    "id": 19,
+    "category": "Shipping & Delivery",
+    "question": "Do you offer free shipping?",
+    "patterns": [
+      "Is shipping free?",
+      "Free delivery minimum order",
+      "How to get free shipping?",
+      "Delivery charges and free shipping threshold"
+    ],
+    "answer": "Yes! Standard shipping is free on all orders over $49. For orders below $49, a flat standard shipping fee of $4.99 applies."
+  },
+  {
+    "id": 20,
+    "category": "Returns & Refunds",
+    "question": "What is your return and refund policy?",
+    "patterns": [
+      "How do I return an item?",
+      "Return policy duration",
+      "Can I get a refund?",
+      "Money back guarantee and return window",
+      "How many days to return a product?"
+    ],
+    "answer": "We offer a 30-day hassle-free return policy on unused items in their original packaging. Once our warehouse inspects the returned item, your refund will be processed to the original payment method within 5-7 business days."
+  },
+  {
+    "id": 21,
+    "category": "Returns & Refunds",
+    "question": "How do I request a replacement for a damaged item?",
+    "patterns": [
+      "Item arrived broken or damaged",
+      "Received defective item replacement",
+      "Exchange broken product",
+      "My order is damaged, what should I do?"
+    ],
+    "answer": "If your item arrived damaged or defective, please navigate to 'Returns & Replacements' in your account, select the item, and upload a photo of the damage. We will dispatch a free replacement within 24 hours."
+  },
+  {
+    "id": 22,
+    "category": "Payments & Billing",
+    "question": "What payment methods do you accept?",
+    "patterns": [
+      "Payment options available",
+      "Can I pay with credit card or PayPal?",
+      "Supported payment gateways",
+      "Do you accept Apple Pay, Google Pay, or debit cards?"
+    ],
+    "answer": "We accept Visa, MasterCard, American Express, Discover, PayPal, Apple Pay, Google Pay, and UPI. All transactions are protected with 256-bit SSL encryption."
+  },
+  {
+    "id": 23,
+    "category": "Payments & Billing",
+    "question": "Why was my payment declined?",
+    "patterns": [
+      "Payment failed during checkout",
+      "Credit card transaction declined",
+      "Why did my transaction not go through?",
+      "Payment processing error"
+    ],
+    "answer": "Payments can be declined due to incorrect CVV/expiry date, insufficient funds, or bank fraud prevention triggers. We recommend contacting your issuing bank or trying an alternative payment method like PayPal."
+  },
+  {
+    "id": 24,
+    "category": "Account & Security",
+    "question": "How do I reset my account password?",
+    "patterns": [
+      "Forgot my password",
+      "How to reset password?",
+      "Cannot login to my account",
+      "Change account password"
+    ],
+    "answer": "Click on 'Sign In', select 'Forgot Password', and enter your registered email address. You will receive a secure password reset link valid for 15 minutes."
+  },
+  {
+    "id": 25,
+    "category": "Account & Security",
+    "question": "How do I enable Two-Factor Authentication (2FA)?",
+    "patterns": [
+      "Enable 2FA on my account",
+      "Two factor authentication setup",
+      "Account security two step verification",
+      "How to protect my account with 2FA"
+    ],
+    "answer": "Go to 'Account Settings' > 'Security' > 'Two-Factor Authentication', and click 'Enable'. You can link an authenticator app (Google Authenticator, Authy) or set up SMS verification codes."
+  },
+  {
+    "id": 26,
+    "category": "Customer Support",
+    "question": "How can I contact customer support?",
+    "patterns": [
+      "Contact human support agent",
+      "Customer care phone number",
+      "Support email address",
+      "Speak to a customer representative",
+      "Help desk live agent contact"
+    ],
+    "answer": "You can reach our 24/7 customer support team via Live Chat on our website, email us at support@example.com, or call toll-free at 1-800-555-0199 (Mon-Fri, 9am - 8pm EST)."
+  },
+  {
+    "id": 27,
+    "category": "Discounts & Promos",
+    "question": "How do I apply a coupon or promo code?",
+    "patterns": [
+      "Where to enter discount code?",
+      "Apply promo coupon at checkout",
+      "Use voucher code for discount",
+      "Promo code not working"
+    ],
+    "answer": "On the checkout page, enter your promo code into the 'Discount / Promo Code' box and click 'Apply'. The discount will immediately reflect in your order total. Note that only one promo code can be used per order."
+  },
+  {
+    "id": 28,
+    "category": "Warranty & Technical",
+    "question": "Do products come with a warranty?",
+    "patterns": [
+      "Product warranty coverage",
+      "How long is manufacturer warranty?",
+      "Claim warranty for repair",
+      "Is there a warranty policy?"
+    ],
+    "answer": "All electronic products include a minimum 1-year manufacturer warranty covering hardware defects. You can also purchase optional extended protection plans (2 or 3 years) during checkout."
+  },
+  {
+    "id": 29,
+    "category": "General",
+    "question": "What are your business hours?",
+    "patterns": [
+      "Operating hours",
+      "When are you open?",
+      "Office working hours",
+      "Customer service availability timings"
+    ],
+    "answer": "Our online store is open 24/7/365. Our customer support team is available Mon-Fri 9 AM - 8 PM EST and Sat-Sun 10 AM - 6 PM EST."
+  },
+  {
+    "id": 30,
+    "category": "General",
+    "question": "Who are you and what can you help with?",
+    "patterns": [
+      "Who are you?",
+      "What is this chatbot?",
+      "What can you do?",
+      "Help me",
+      "Hi",
+      "Hello",
+      "Hey"
+    ],
+    "answer": "Hello! I am your AI FAQ Assistant. I can help answer questions about order tracking, shipping & delivery, returns & refunds, payment methods, account security, and warranty support. What can I help you with today?"
+  }
+]
